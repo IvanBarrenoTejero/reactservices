@@ -1,8 +1,9 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import TablaMultiplicar from "./TablaMultiplicar";
 import NotFoundComponent from "./NotFoundComponent";
 import CollatzComponent from "./CollatzComponent";
+import MenuComponent from "./MenuComponent";
 
 function TablaMultiplicarElement() {
   const { minumero } = useParams();
@@ -16,11 +17,21 @@ function CollatzComponentElement() {
 
 export default function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<HomeComponent />} />
-      <Route path="/tabla/:minumero" element={<TablaMultiplicarElement />} />
-      <Route path="/collatz/:minumero" element={<CollatzComponentElement />} />
-      <Route path="*" element={<NotFoundComponent />} />
-    </Routes>
+    <BrowserRouter>
+      <MenuComponent>
+        <Routes>
+          <Route path="/" element={<HomeComponent />} />
+          <Route
+            path="/tabla/:minumero"
+            element={<TablaMultiplicarElement />}
+          />
+          <Route
+            path="/collatz/:minumero"
+            element={<CollatzComponentElement />}
+          />
+          <Route path="*" element={<NotFoundComponent />} />
+        </Routes>
+      </MenuComponent>
+    </BrowserRouter>
   );
 }

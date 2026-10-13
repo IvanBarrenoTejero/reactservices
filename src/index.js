@@ -11,7 +11,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <div style={{ margin: "auto", width: "50%" }}>
-      <MenuComponent />
       <Router />
     </div>
   </BrowserRouter>,
